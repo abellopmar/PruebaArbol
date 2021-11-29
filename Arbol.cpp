@@ -69,6 +69,7 @@ void Arbol::inorden(pnodoAbb nodo) {
 }
 
 int Arbol::altura(pnodoAbb nodo) {
+    if (!nodo) return -1;
     if (!nodo->izq) {
         if (!nodo->der) return 0;
         else return 1 + altura(nodo->der);

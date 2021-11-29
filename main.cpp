@@ -15,6 +15,6 @@ int main() {
     for(int i : A) abb.insertar(i);
         
     cout << endl << "\nMi Abb: ";
-    abb.dibujar();
+    //abb.dibujar();
 	return 0;
 }
