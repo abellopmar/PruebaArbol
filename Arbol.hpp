@@ -10,14 +10,15 @@ public:
     void insertar(int val);
     void inorden();
     void dibujar();
-    int altura(pnodoAbb);//////////////////
+    //int altura(pnodoAbb);/////////////////////////
+    //pnodoAbb raiz;//////////////////////////
     ~Arbol();
     
 private:
     pnodoAbb raiz;
     pnodoAbb insertar(pnodoAbb, int);
     void inorden(pnodoAbb);
-    //int altura(pnodoAbb);
+    int altura(pnodoAbb);
     void dibujarNodo(vector<string>& output, vector<string>& linkAbove, pnodoAbb nodo, int nivel, int minPos, char linkChar);
 };
 

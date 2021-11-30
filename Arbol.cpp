@@ -5,16 +5,16 @@ Arbol::Arbol() {
 }
 
 void Arbol::insertar(int val) {
+    //cout << "\n\n" << this->altura(this->raiz) << "\n\n";
     pnodoAbb nuevo = new NodoArbol(val);
     if (!this->raiz) this->raiz = nuevo;
     else {
-        int dat = this->raiz->dato;
-        if (val <= dat){
+        if (val <= this->raiz->dato){
             if (!this->raiz->izq) this->raiz->izq = nuevo;
-            else this->insertar(val);
+            else this->raiz->izq = this->insertar(this->raiz->izq, val);
         } else {
             if (!this->raiz->der) this->raiz->der = nuevo;
-            else this->insertar(val);
+            else this->raiz->der = this->insertar(this->raiz->der, val);
         }
     }
 }
@@ -37,7 +37,7 @@ void Arbol::dibujar() {
                 while(output[i - 1][jj] == ' ')
                     jj++;
                 for(int k = j + 1;  k < jj - 1; k++) {
-                    output[i -1][k] = '_';
+                    output[i - 1][k] = '_';
                 }
             }
             else if(linkAbove[i][j] == 'R') {
@@ -61,6 +61,14 @@ void Arbol::dibujar() {
 //FUNCIONES PRIVADAS
 
 pnodoAbb Arbol::insertar(pnodoAbb nodo, int val) {
+    pnodoAbb nuevo = new NodoArbol(val);
+    if (val <= nodo->dato){
+        if (!nodo->izq) nodo->izq = nuevo;
+        else nodo->izq = this->insertar(nodo->izq, val);
+    } else {
+        if (!nodo->der) nodo->der = nuevo;
+        else nodo->der = this->insertar(nodo->der, val);
+    }
     return nodo;
 }
 

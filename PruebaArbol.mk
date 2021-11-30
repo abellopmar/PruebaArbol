@@ -13,8 +13,8 @@ OutDir                 :=../build-$(ConfigurationName)/PruebaArbol
 CurrentFileName        :=
 CurrentFilePath        :=
 CurrentFileFullPath    :=
-User                   :=Abel
-Date                   :=29/11/2021
+User                   :=Usuario
+Date                   :=30/11/2021
 CodeLitePath           :="C:/Program Files/CodeLite"
 LinkerName             :=C:/TDM-GCC-64/bin/g++.exe
 SharedObjectLinkerName :=C:/TDM-GCC-64/bin/g++.exe -shared -fPIC
@@ -62,7 +62,7 @@ AS       := C:/TDM-GCC-64/bin/as.exe
 ## User defined environment variables
 ##
 CodeLiteDir:=C:\Program Files\CodeLite
-Objects0=../build-$(ConfigurationName)/PruebaArbol/NodoArbol.cpp$(ObjectSuffix) ../build-$(ConfigurationName)/PruebaArbol/Arbol.cpp$(ObjectSuffix) ../build-$(ConfigurationName)/PruebaArbol/main.cpp$(ObjectSuffix) 
+Objects0=../build-$(ConfigurationName)/PruebaArbol/Arbol.cpp$(ObjectSuffix) ../build-$(ConfigurationName)/PruebaArbol/main.cpp$(ObjectSuffix) ../build-$(ConfigurationName)/PruebaArbol/NodoArbol.cpp$(ObjectSuffix) 
 
 
 
@@ -93,14 +93,6 @@ PreBuild:
 ##
 ## Objects
 ##
-../build-$(ConfigurationName)/PruebaArbol/NodoArbol.cpp$(ObjectSuffix): NodoArbol.cpp ../build-$(ConfigurationName)/PruebaArbol/NodoArbol.cpp$(DependSuffix)
-	$(CXX) $(IncludePCH) $(SourceSwitch) "C:/EstrucDatosPECL/PruebaArbol/NodoArbol.cpp" $(CXXFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/NodoArbol.cpp$(ObjectSuffix) $(IncludePath)
-../build-$(ConfigurationName)/PruebaArbol/NodoArbol.cpp$(DependSuffix): NodoArbol.cpp
-	@$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) -MG -MP -MT../build-$(ConfigurationName)/PruebaArbol/NodoArbol.cpp$(ObjectSuffix) -MF../build-$(ConfigurationName)/PruebaArbol/NodoArbol.cpp$(DependSuffix) -MM NodoArbol.cpp
-
-../build-$(ConfigurationName)/PruebaArbol/NodoArbol.cpp$(PreprocessSuffix): NodoArbol.cpp
-	$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) ../build-$(ConfigurationName)/PruebaArbol/NodoArbol.cpp$(PreprocessSuffix) NodoArbol.cpp
-
 ../build-$(ConfigurationName)/PruebaArbol/Arbol.cpp$(ObjectSuffix): Arbol.cpp ../build-$(ConfigurationName)/PruebaArbol/Arbol.cpp$(DependSuffix)
 	$(CXX) $(IncludePCH) $(SourceSwitch) "C:/EstrucDatosPECL/PruebaArbol/Arbol.cpp" $(CXXFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/Arbol.cpp$(ObjectSuffix) $(IncludePath)
 ../build-$(ConfigurationName)/PruebaArbol/Arbol.cpp$(DependSuffix): Arbol.cpp
@@ -116,6 +108,14 @@ PreBuild:
 
 ../build-$(ConfigurationName)/PruebaArbol/main.cpp$(PreprocessSuffix): main.cpp
 	$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) ../build-$(ConfigurationName)/PruebaArbol/main.cpp$(PreprocessSuffix) main.cpp
+
+../build-$(ConfigurationName)/PruebaArbol/NodoArbol.cpp$(ObjectSuffix): NodoArbol.cpp ../build-$(ConfigurationName)/PruebaArbol/NodoArbol.cpp$(DependSuffix)
+	$(CXX) $(IncludePCH) $(SourceSwitch) "C:/EstrucDatosPECL/PruebaArbol/NodoArbol.cpp" $(CXXFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/NodoArbol.cpp$(ObjectSuffix) $(IncludePath)
+../build-$(ConfigurationName)/PruebaArbol/NodoArbol.cpp$(DependSuffix): NodoArbol.cpp
+	@$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) -MG -MP -MT../build-$(ConfigurationName)/PruebaArbol/NodoArbol.cpp$(ObjectSuffix) -MF../build-$(ConfigurationName)/PruebaArbol/NodoArbol.cpp$(DependSuffix) -MM NodoArbol.cpp
+
+../build-$(ConfigurationName)/PruebaArbol/NodoArbol.cpp$(PreprocessSuffix): NodoArbol.cpp
+	$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) ../build-$(ConfigurationName)/PruebaArbol/NodoArbol.cpp$(PreprocessSuffix) NodoArbol.cpp
 
 
 -include ../build-$(ConfigurationName)/PruebaArbol//*$(DependSuffix)
