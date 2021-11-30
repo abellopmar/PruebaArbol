@@ -10,8 +10,11 @@ public:
     void insertar(int val);
     void inorden();
     void dibujar();
-    //int altura(pnodoAbb);/////////////////////////
-    //pnodoAbb raiz;//////////////////////////
+    int buscarMenor(bool left);
+    int buscarMayor(bool left);
+    int contarImpares();
+    void mostrarHojas();
+    void borrarElemento(int e);
     ~Arbol();
     
 private:
@@ -20,6 +23,12 @@ private:
     void inorden(pnodoAbb);
     int altura(pnodoAbb);
     void dibujarNodo(vector<string>& output, vector<string>& linkAbove, pnodoAbb nodo, int nivel, int minPos, char linkChar);
+    int buscarMenor(pnodoAbb);
+    int buscarMayor(pnodoAbb);
+    int contarImpares(pnodoAbb);
+    void mostrarHojas(pnodoAbb);
+    void borrarElemento(pnodoAbb, int);
+    void borrarNodo(pnodoAbb, int);
 };
 
 #endif // ARBOL_HPP

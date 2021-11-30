@@ -15,7 +15,21 @@ int main() {
     for(int i : A) abb.insertar(i);
         
     cout << endl << "\nMi Abb: ";
-    //cout << endl << abb.altura(abb.raiz) << endl;
+    
     abb.dibujar();
+    
+    cout << "inorden\n";
+    abb.inorden();
+    
+    cout << "mayores y menores\n";
+    cout << abb.buscarMenor(true) << endl;
+    cout << abb.buscarMayor(true) << endl;
+    cout << abb.buscarMenor(false) << endl;
+    cout << abb.buscarMayor(false) << endl;
+    
+    cout << "Hay " << abb.contarImpares() << " impares" << endl;
+    
+    cout << "Mostrar de hojas\n";
+    abb.mostrarHojas();
 	return 0;
 }
