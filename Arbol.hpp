@@ -19,16 +19,17 @@ public:
     
 private:
     pnodoAbb raiz;
-    pnodoAbb insertar(pnodoAbb, int);
-    void inorden(pnodoAbb);
-    int altura(pnodoAbb);
+    pnodoAbb insertar(pnodoAbb nodo, int val);
+    void inorden(pnodoAbb nodo);
+    int altura(pnodoAbb nodo);
     void dibujarNodo(vector<string>& output, vector<string>& linkAbove, pnodoAbb nodo, int nivel, int minPos, char linkChar);
-    int buscarMenor(pnodoAbb);
-    int buscarMayor(pnodoAbb);
-    int contarImpares(pnodoAbb);
-    void mostrarHojas(pnodoAbb);
-    void borrarElemento(pnodoAbb, int);
-    void borrarNodo(pnodoAbb, int);
+    int buscarMenor(pnodoAbb nodo);
+    int buscarMayor(pnodoAbb nodo);
+    int contarImpares(pnodoAbb nodo);
+    void mostrarHojas(pnodoAbb nodo);
+    pnodoAbb borrarElemento(pnodoAbb nodo, int e);
+    pnodoAbb borrarNodo(pnodoAbb nodo);
+    int maximo(pnodoAbb nodo);
 };
 
 #endif // ARBOL_HPP

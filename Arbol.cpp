@@ -69,20 +69,16 @@ void Arbol::mostrarHojas() {
 }
 
 void Arbol::borrarElemento(int e) {
-    //borrarElemento(this->raiz, e);
+    this->raiz = borrarElemento(this->raiz, e);
 }
 
-// FUNCIONES PRIVADAS
+///////// FUNCIONES PRIVADAS /////////
 
 pnodoAbb Arbol::insertar(pnodoAbb nodo, int val) {
     pnodoAbb nuevo = new NodoArbol(val);
-    if(!nodo)
-        return nuevo;
-    if(val <= nodo->dato) {
-        nodo->izq = insertar(nodo->izq, val);
-    } else {
-        nodo->der = insertar(nodo->der, val);
-    }
+    if(!nodo) return nuevo;
+    if(val <= nodo->dato) nodo->izq = insertar(nodo->izq, val);
+    else nodo->der = insertar(nodo->der, val);
     return nodo;
 }
 
@@ -95,45 +91,28 @@ void Arbol::inorden(pnodoAbb nodo) {
 }
 
 int Arbol::altura(pnodoAbb nodo) {
-    if(!nodo)
-        return 0;
+    if(!nodo) return 0;
     return 1 + max(altura(nodo->izq), altura(nodo->der));
 }
 
 void Arbol::dibujarNodo(vector<string>& output, vector<string>& linkAbove, pnodoAbb nodo, int nivel, int p, char linkChar) {
-    if(!nodo)
-
-        return;
-
+    if(!nodo) return;
+    
     int h = output.size();
-
     string SP = " ";
-
+    
     if(p < 0) {
-
         string extra(-p, ' ');
-
         for(string& s : output)
-
-            if(!s.empty())
-
-                s = extra + s;
-
+            if(!s.empty()) s = extra + s;
+            
         for(string& s : linkAbove)
-
-            if(!s.empty())
-
-                s = extra + s;
+            if(!s.empty()) s = extra + s;
     }
 
-    if(nivel < h - 1)
-
-        p = max(p, (int)output[nivel + 1].size());
-
-    if(nivel > 0)
-
-        p = max(p, (int)output[nivel - 1].size());
-
+    if(nivel < h - 1) p = max(p, (int)output[nivel + 1].size());
+    
+    if(nivel > 0) p = max(p, (int)output[nivel - 1].size());
     p = max(p, (int)output[nivel].size());
 
     if(nodo->izq) {
@@ -178,6 +157,36 @@ void Arbol::mostrarHojas(pnodoAbb nodo) {
         if (!nodo->izq and !nodo->der) cout << nodo->dato << "  ";
         mostrarHojas(nodo->der);
     }
+}
+
+pnodoAbb Arbol::borrarElemento(pnodoAbb nodo, int e) {
+    if (e == nodo->dato) nodo = borrarNodo(nodo);
+    else if (e < nodo->dato) nodo->izq = borrarElemento(nodo->izq, e);
+    else nodo->der = borrarElemento(nodo->der, e);
+    return nodo;
+}
+
+pnodoAbb Arbol::borrarNodo(pnodoAbb nodo) {
+    pnodoAbb nuevo;
+    int e;
+    if (!nodo->izq) {
+        nuevo = nodo->der;
+        nodo->der = NULL;
+    } else if (!nodo->der) {
+        nuevo = nodo->izq;
+        nodo->izq = NULL;
+    } else {
+        e = maximo(nodo->izq);
+        nodo->dato = e;
+        nodo->izq = borrarElemento(nodo->izq, e);
+        nuevo = nodo;
+    }
+    return nuevo;
+}
+
+int Arbol::maximo(pnodoAbb nodo) {
+    if (!nodo->der) return nodo->dato;
+    return maximo(nodo->der);
 }
 
 Arbol::~Arbol() {
